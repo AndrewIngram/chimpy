@@ -304,7 +304,7 @@ class Connection(object):
         order['store_name'] = store_name
         order['campaign_id'] = campaign_id
 
-        return self._api_call(method='campaignEcommAddOrder', order)
+        return self._api_call(method='campaignEcommAddOrder', order=order)
 
     def ecommerce_add_order(self,store_id,store_name,email,order,order_date):
         order['email'] = email
@@ -313,5 +313,5 @@ class Connection(object):
         order['store_name'] = store_name
         order['order_date'] = order_date
 
-        return self._api_call(method='ecommAddOrder', order)
+        return self._api_call(method='ecommAddOrder', order=order)
 
