@@ -34,9 +34,9 @@ class Connection(object):
         
     def _rpc(self, method, **params):
         """make an rpc call to the server"""
-
-        params = urllib.urlencode(params, doseq=True)
-
+        
+        params = urllib.urlencode(dict([k, v.encode('utf-8')] for k, v in params.items()], doseq=True)
+        
         if _debug > 1:
             print __name__, "making request with parameters"
             pprint.pprint(params)
