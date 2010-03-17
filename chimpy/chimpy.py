@@ -111,13 +111,19 @@ class Connection(object):
                        email_address,
                        merge_vars,
                        email_type='text',
-                        double_optin=True):
+                       double_optin=True,
+                       update_existing=False,
+                       replace_interests=True,
+                       send_welcome=False):
         return self._api_call(method='listSubscribe',
                               id=id,
                               email_address=email_address,
                               merge_vars=merge_vars,
                               email_type=email_type,
-                              double_optin=double_optin)
+                              double_optin=double_optin,
+                              update_existing=update_existing,
+                              replace_interests=replace_interests,
+                              send_welcome=send_welcome)
 
     def list_unsubscribe(self,
                          id,
@@ -150,8 +156,18 @@ class Connection(object):
                               id=id,
                               email_address=email_address)
 
-    def list_members(self, id, status='subscribed'):
-        return self._api_call(method='listMembers', id=id, status=status)
+    def list_members(self,
+                     id,
+                    status='subscribed',
+                    since=None,
+                    start=0,
+                    limit=100):
+        return self._api_call(method='listMembers',
+                              id=id,
+                              status=status,
+                              since=since,
+                              start=start,
+                              limit=limit)
 
     def list_interest_groups(self, id):
         return self._api_call(method='listInterestGroups', id=id)
