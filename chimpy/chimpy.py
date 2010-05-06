@@ -303,6 +303,15 @@ class Connection(object):
 
         return self._api_call(method='campaignUpdate', cid=cid, name=name, value=value)
 
+    def list_webhooks(self, id):
+        return self._api_call(method='listWebhooks', id=id)
+
+    def list_webhook_add(self, id, url, actions, sources):
+        return self._api_call(method='listWebhookAdd',id=id, url=url, actions=actions, sources=sources)
+
+    def list_webhook_del(self, id, url):
+        return self._api_call(method='listWebhookDel', id=id, url=url)
+
     def campaigns(self, filters={}, start=0, limit=50):
         """Get the list of campaigns and their details matching the specified filters.
         Timestamps should be passed as datatime objects.
